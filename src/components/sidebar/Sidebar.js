@@ -25,12 +25,12 @@ const Sidebar = ({ sidebar, handleToggleSidebar }) => {
       className={sidebar ? "sidebar visible" : "sidebar"}
       onClick={handleToggleSidebar}
     >
-      <li>
-        <NavLink to="/" style={{ textDecoration: "none" }}>
+      <NavLink to="/" style={{ textDecoration: "none" }}>
+        <li>
           <MdHome size={23} />
           <span>Home</span>
-        </NavLink>
-      </li>
+        </li>
+      </NavLink>
       <li>
         <MdSubscriptions size={23} /> <span>Subscription</span>
       </li>
