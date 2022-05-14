@@ -72,7 +72,7 @@ export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
   }
 };
 
-export const getVideoDetailsById = (id) => async (dispatch) => {
+export const getVideoDetailsById = (videoId) => async (dispatch) => {
   try {
     dispatch({
       type: VIDEO_DETAILS_REQUEST,
@@ -80,7 +80,7 @@ export const getVideoDetailsById = (id) => async (dispatch) => {
     const { data } = await request("/videos", {
       params: {
         part: "snippet, statistics",
-        id: id,
+        id: videoId,
       },
     });
 
