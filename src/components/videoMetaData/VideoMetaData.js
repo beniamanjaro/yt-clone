@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import numeral from "numeral";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
@@ -11,14 +11,14 @@ const VideoMetaData = ({ video }) => {
   const { title, publishedAt, description, channelId } = snippet;
   const { viewCount, likeCount } = statistics;
   const dispatch = useDispatch();
-
+  const {channel} = useSelector(state => state.channelDetails)
+  
   useEffect(() => {
-    const getChannelDetails = async () => {
-      await dispatch(getChannelDetailsById(channelId));
-    };
-    console.log(channelId);
-    getChannelDetails();
-  }, [dispatch, channelId]);
+      dispatch(getChannelDetailsById(channelId));
+    }, [dispatch, channelId]);
+    
+
+
 
   return (
     <div className="video__metaData">
@@ -38,7 +38,21 @@ const VideoMetaData = ({ video }) => {
         </div>
       </div>
       <div className="video__metaData__description">
-        <div className="video__metaData__description__channel">channel</div>
+        <div className="video__metaData__description__channel">
+          <div className="video__metaData__description__channel__left">
+            <div className="video__metaData__description__channel__left__img">
+            </div>
+          </div>
+          <div className="video__metaData__description__channel__middle">
+            <h4>
+                
+            </h4>
+            <span></span>
+                  </div>
+          <div className="video__metaData__description__channel__right">
+            right
+          </div>
+        </div>
         <div className="video__metaData__description__text">
           {description.split("\n").map((l, i, arr) => {
             const line = <span key={i}>{l}</span>;
