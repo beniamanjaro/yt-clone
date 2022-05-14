@@ -13,10 +13,7 @@ const WatchScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const call = async () => {
-      await dispatch(getVideoDetailsById(id));
-    };
-    call();
+      dispatch(getVideoDetailsById(id));
   }, [dispatch, id]);
 
   const { video, loading } = useSelector((state) => state.videoDetails);
