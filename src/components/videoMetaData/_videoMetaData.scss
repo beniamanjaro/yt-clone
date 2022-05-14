@@ -1,0 +1,37 @@
+@import "../../base";
+
+.video__metaData {
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      color: white;
+    }
+    &__stats {
+      display: flex;
+      justify-content: space-between;
+
+      &__left {
+        display: flex;
+      }
+      &__right {
+        display: flex;
+        &__likes {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+          color: white;
+        }
+      }
+    }
+  }
+
+  &__channel {
+    display: flex;
+    flex-direction: column;
+  }
+}
