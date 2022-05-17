@@ -1,19 +1,24 @@
-
 .video__metaData {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid grey;
+  padding-bottom: 1rem;
 
   &__top {
     display: flex;
     flex-direction: column;
 
     &__title {
+      padding-top: 1.5rem;
       color: white;
     }
     &__stats {
       display: flex;
       justify-content: space-between;
-
+      align-items: center;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid grey;
       &__left {
         display: flex;
       }
@@ -24,6 +29,7 @@
           align-items: center;
           gap: 2px;
           color: white;
+          padding-right: 2rem;
         }
       }
     }
@@ -36,18 +42,35 @@
     &__channel {
       display: flex;
       align-items: center;
-
+      padding-top: 1rem;
+      padding-bottom: 2rem;
       &__left {
-        display:flex;
-        border: 2px solid black;
-        border-radius: 50%;
+        display: flex;
+
+        img {
+          border: 2px solid black;
+          border-radius: 50%;
+          width: 48px;
+        }
       }
       &__middle {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
         padding-left: 1rem;
-      } 
+
+        span {
+          font-size: 0.8rem;
+        }
+
+        h6 {
+          color: white;
+        }
+      }
+    }
+
+    &__text {
+      margin-left: 64px;
     }
   }
 }
