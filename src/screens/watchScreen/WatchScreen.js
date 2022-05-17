@@ -13,7 +13,7 @@ const WatchScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(getVideoDetailsById(id));
+    dispatch(getVideoDetailsById(id));
   }, [dispatch, id]);
 
   const { video, loading } = useSelector((state) => state.videoDetails);
@@ -32,7 +32,7 @@ const WatchScreen = () => {
           ></iframe>
         </div>
         {!loading ? <VideoMetaData video={video} /> : <h5>Loading</h5>}
-        <Comments />
+        <Comments videoId={id} />
       </Col>
       <Col lg={4}>
         {[...Array(10)].map(() => (
