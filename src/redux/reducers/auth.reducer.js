@@ -8,8 +8,8 @@ import {
 
 const initialState = {
   accessToken: sessionStorage.getItem("ytc-access-token") || null,
-  user: null,
-  loadin: false,
+  user: sessionStorage.getItem("ytc-user") || null,
+  loading: false,
 };
 
 export const authReducer = (prevState = initialState, action) => {
