@@ -1,0 +1,18 @@
+.comments__header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  &__input {
+    display: flex;
+    align-items: center;
+    img {
+      border: 2px solid black;
+      border-radius: 50%;
+      width: 48px;
+    }
+
+    &__right {
+      padding-left: 16px;
+    }
+  }
+}
