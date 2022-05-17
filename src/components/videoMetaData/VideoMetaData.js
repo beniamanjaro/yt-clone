@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import numeral from "numeral";
-import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import { AiOutlineLike } from "react-icons/ai";
 import "./_videoMetaData.scss";
 import { getChannelDetailsById } from "../../redux/actions/channel.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,15 +10,24 @@ const VideoMetaData = ({ video }) => {
   const { snippet, statistics } = video;
   const { title, publishedAt, description, channelId } = snippet;
   const { viewCount, likeCount } = statistics;
+  const [showLines, setShowLines] = useState(3);
+  const [showMore, setShowMore] = useState(true);
   const dispatch = useDispatch();
-  const {channel} = useSelector(state => state.channelDetails)
-  
+  const { channel } = useSelector((state) => state.channelDetails);
+  let n = 0;
+
   useEffect(() => {
-      dispatch(getChannelDetailsById(channelId));
-    }, [dispatch, channelId]);
-    
+    dispatch(getChannelDetailsById(channelId));
+  }, [dispatch, channelId]);
 
+  const handleShowMoreText = () => {
+    setShowMore(!showMore);
+  };
 
+  const handleShowLines = () => {
+    showMore ? setShowLines(null) : setShowLines(3);
+    handleShowMoreText();
+  };
 
   return (
     <div className="video__metaData">
@@ -26,7 +35,7 @@ const VideoMetaData = ({ video }) => {
         <div className="video__metaData__top__title">{title}</div>
         <div className="video__metaData__top__stats">
           <div className="video__metaData__top__stats__left">
-            <span>{numeral(viewCount).format("0.a")} Views •</span>
+            <span>{numeral(viewCount).format("0.a")} Views • </span>
             <span>{moment(publishedAt).fromNow()}</span>
           </div>
           <div className="video__metaData__top__stats__right">
@@ -40,15 +49,18 @@ const VideoMetaData = ({ video }) => {
       <div className="video__metaData__description">
         <div className="video__metaData__description__channel">
           <div className="video__metaData__description__channel__left">
-            <div className="video__metaData__description__channel__left__img">
-            </div>
+            <img
+              src={channel?.snippet?.thumbnails?.default?.url}
+              alt="channel thumbnail"
+            />
           </div>
           <div className="video__metaData__description__channel__middle">
-            <h4>
-                
-            </h4>
-            <span></span>
-                  </div>
+            <h6>{channel?.snippet?.title}</h6>
+            <span>
+              {`${numeral(channel?.statistics?.subscriberCount).format("0.a")} 
+              subscribers`}
+            </span>
+          </div>
           <div className="video__metaData__description__channel__right">
             right
           </div>
@@ -56,12 +68,25 @@ const VideoMetaData = ({ video }) => {
         <div className="video__metaData__description__text">
           {description.split("\n").map((l, i, arr) => {
             const line = <span key={i}>{l}</span>;
-            if (i === arr.length - 1) {
-              return line;
+            if (n === showLines) {
+              return;
             } else {
-              return [line, <br key={i + "br"} />];
+              n++;
+              if (i === arr.length - 1) {
+                return line;
+              } else {
+                return [line, <br key={i + "br"} />];
+              }
             }
           })}
+          {showMore ? (
+            <button onClick={() => handleShowLines()}>show more</button>
+          ) : (
+            <>
+              <br></br>
+              <button onClick={() => handleShowLines()}>show less</button>
+            </>
+          )}
         </div>
       </div>
     </div>
