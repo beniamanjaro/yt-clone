@@ -5,6 +5,9 @@ import {
   VIDEO_DETAILS_FAIL,
   VIDEO_DETAILS_SUCCESS,
   VIDEO_DETAILS_REQUEST,
+  RELATED_VIDEOS_SUCCESS,
+  RELATED_VIDEOS_FAIL,
+  RELATED_VIDEOS_REQUEST,
 } from "../actionTypes";
 import request from "../../api";
 
@@ -94,5 +97,27 @@ export const getVideoDetailsById = (videoId) => async (dispatch) => {
       type: VIDEO_DETAILS_FAIL,
       payload: error.message,
     });
+  }
+};
+
+export const getRelatedVideosById = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: RELATED_VIDEOS_REQUEST });
+
+    const { data } = await request("/search", {
+      params: {
+        part: "snippet",
+        relatedToVideoId: id,
+        maxResults: 15,
+        type: "video",
+      },
+    });
+
+    dispatch({
+      type: RELATED_VIDEOS_SUCCESS,
+      payload: data.items,
+    });
+  } catch (error) {
+    dispatch({ type: RELATED_VIDEOS_FAIL, payload: error.message });
   }
 };
