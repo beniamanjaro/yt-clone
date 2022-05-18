@@ -4,8 +4,17 @@ import "./_header.scss";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdNotifications, MdApps } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ handleToggleSidebar }) => {
+  const userProfile = useSelector((state) =>
+    typeof state.auth.user === "string"
+      ? JSON.parse(state.auth.user)
+      : state.auth.user
+  );
+  const navigate = useNavigate();
+
   return (
     <div className="border border-dark header">
       <FaBars
@@ -14,7 +23,8 @@ const Header = ({ handleToggleSidebar }) => {
         onClick={handleToggleSidebar}
       />
       <img
-        src="http://pngimg.com/uploads/youtube/youtube_PNG2.png"
+        onClick={() => navigate("/")}
+        src={"http://pngimg.com/uploads/youtube/youtube_PNG2.png"}
         alt="logo"
         className="header__logo"
       />
@@ -28,10 +38,7 @@ const Header = ({ handleToggleSidebar }) => {
       <div className="header__icons">
         <MdNotifications size={28} />
         <MdApps size={28} />
-        <img
-          src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
-          alt="avatar"
-        />
+        <img src={userProfile?.photoURL} alt="avatar" />
       </div>
     </div>
   );
