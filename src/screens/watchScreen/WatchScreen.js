@@ -26,7 +26,6 @@ const WatchScreen = () => {
     (state) => state.relatedVideos
   );
 
-  console.log(relatedVideos);
   return (
     <Row>
       <Col lg={8}>
