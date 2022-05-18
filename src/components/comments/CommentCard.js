@@ -4,7 +4,6 @@ import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import "./_commentCard.scss";
 
 const CommentCard = ({ commentDetails }) => {
-  console.log(commentDetails);
   return (
     <div className="comment__card">
       <div className="comment__card__authorProfileImage">
