@@ -71,6 +71,14 @@
 
     &__text {
       margin-left: 64px;
+
+      &__btn {
+        background-color: transparent;
+        border: none;
+        color: grey;
+        font-size: medium;
+        padding-top: 16px;
+      }
     }
   }
 }
