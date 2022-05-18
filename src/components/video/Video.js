@@ -5,7 +5,7 @@ import numeral from "numeral";
 import { AiFillEye } from "react-icons/ai";
 import request from "../../api";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Video = ({ video }) => {
   const {
