@@ -15,8 +15,8 @@ const CommentsInput = () => {
         <img src={userProfile?.photoURL} />
         <div className="comments__header__input__right">
           <form>
-            <input></input>
-            <button className="comments__header__input__right__button">
+            <textarea></textarea>
+            <button className="comments__header__input__right__btn">
               Comment
             </button>
           </form>
