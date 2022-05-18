@@ -16,7 +16,6 @@ const Comments = ({ videoId }) => {
   const commentsToRender = comments?.map(
     (comment) => comment.snippet.topLevelComment
   );
-  console.log(commentsToRender);
 
   return (
     <>
