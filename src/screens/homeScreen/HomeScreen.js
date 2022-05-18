@@ -35,7 +35,6 @@ const HomeScreen = () => {
   return (
     <Container>
       <CategoriesBar />
-
       <InfiniteScroll
         dataLength={videos.length}
         hasMore={hasMore}
@@ -50,11 +49,6 @@ const HomeScreen = () => {
             {videos.map((video, i) => (
               <Col lg={3} md={4}>
                 <Video video={video} key={i} />
-              </Col>
-            ))}
-            {[...Array(4)].map(() => (
-              <Col lg={3} md={4}>
-                <SkeletonVideo height={180} width="100%" />
               </Col>
             ))}
           </>
