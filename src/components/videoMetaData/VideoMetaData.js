@@ -3,7 +3,10 @@ import moment from "moment";
 import numeral from "numeral";
 import { AiOutlineLike } from "react-icons/ai";
 import "./_videoMetaData.scss";
-import { getChannelDetailsById } from "../../redux/actions/channel.action";
+import {
+  getChannelDetailsById,
+  getSubscriptionStatus,
+} from "../../redux/actions/channel.action";
 import { useDispatch, useSelector } from "react-redux";
 
 const VideoMetaData = ({ video }) => {
@@ -18,6 +21,7 @@ const VideoMetaData = ({ video }) => {
 
   useEffect(() => {
     dispatch(getChannelDetailsById(channelId));
+    dispatch(getSubscriptionStatus(channelId));
   }, [dispatch, channelId]);
 
   const handleShowMoreText = () => {
@@ -80,11 +84,21 @@ const VideoMetaData = ({ video }) => {
             }
           })}
           {showMore ? (
-            <button onClick={() => handleShowLines()}>show more</button>
+            <button
+              className="video__metaData__description__text__btn"
+              onClick={() => handleShowLines()}
+            >
+              SHOW MORE
+            </button>
           ) : (
             <>
               <br></br>
-              <button onClick={() => handleShowLines()}>show less</button>
+              <button
+                className="video__metaData__description__text__btn"
+                onClick={() => handleShowLines()}
+              >
+                SHOW LESS
+              </button>
             </>
           )}
         </div>
