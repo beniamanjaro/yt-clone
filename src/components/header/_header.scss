@@ -9,8 +9,9 @@
   position: fixed;
   background-color: $black-primary;
   top: 0;
-  height: 10vh;
+  height: 7vh;
   width: 100%;
+  opacity: 0.99;
 
   &__menu {
     display: none;
