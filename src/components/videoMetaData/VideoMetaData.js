@@ -65,9 +65,9 @@ const VideoMetaData = ({ video }) => {
               subscribers`}
             </span>
           </div>
-          <div className="video__metaData__description__channel__right">
-            right
-          </div>
+          <button className="video__metaData__description__channel__right">
+            SUBSCRIBE
+          </button>
         </div>
         <div className="video__metaData__description__text">
           {description.split("\n").map((l, i, arr) => {

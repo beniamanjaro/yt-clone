@@ -67,6 +67,15 @@
           color: white;
         }
       }
+
+      &__right {
+        background-color: red;
+        color: white;
+        width: 7.5rem;
+        height: 2.5rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+      }
     }
 
     &__text {
