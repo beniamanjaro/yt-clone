@@ -10,7 +10,7 @@ const CommentsInput = () => {
   );
   return (
     <div className="comments__header">
-      <div>comments</div>
+      <div>1,234 Comments</div>
       <div className="comments__header__input">
         <img src={userProfile?.photoURL} />
         <div className="comments__header__input__right">
