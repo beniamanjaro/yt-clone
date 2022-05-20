@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import VideoHorizontal from "../../components/videoHorizontal/VideoHorizontal";
 import VideoMetaData from "../../components/videoMetaData/VideoMetaData";
 import Comments from "../../components/comments/Comments";
@@ -11,6 +10,7 @@ import {
   getRelatedVideosById,
   getVideoDetailsById,
 } from "../../redux/actions/videos.action";
+import SkeletonVideoHorizontal from "../../components/skeletons/SkeletonVideoHorizontal";
 
 const WatchScreen = () => {
   const { id } = useParams();
@@ -50,9 +50,7 @@ const WatchScreen = () => {
               <VideoHorizontal video={video} key={video.id.videoId} />
             ))
         ) : (
-          <SkeletonTheme color="#343a40" highlightColor="#3c4147">
-            <Skeleton width="100%" height="130px" count={15} />
-          </SkeletonTheme>
+          <SkeletonVideoHorizontal count={15} />
         )}
       </Col>
     </Row>
