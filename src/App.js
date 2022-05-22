@@ -11,6 +11,7 @@ import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import "./_app.scss";
 import { useSelector } from "react-redux";
 import WatchScreen from "./screens/watchScreen/WatchScreen";
+import SearchScreen from "./screens/searchScreen/SearchScreen";
 
 const Layout = ({ children }) => {
   const [sidebar, toggleSidebar] = useState(false);
@@ -68,6 +69,14 @@ const App = () => {
         element={
           <Layout>
             <WatchScreen />
+          </Layout>
+        }
+      ></Route>
+      <Route
+        path="/search/:id"
+        element={
+          <Layout>
+            <SearchScreen />
           </Layout>
         }
       ></Route>
