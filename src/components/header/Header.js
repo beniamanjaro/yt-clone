@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./_header.scss";
 
 import { FaBars } from "react-icons/fa";
@@ -8,12 +8,24 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Header = ({ handleToggleSidebar }) => {
+  const [searchValue, setSearchValue] = useState("");
   const userProfile = useSelector((state) =>
     typeof state.auth.user === "string"
       ? JSON.parse(state.auth.user)
       : state.auth.user
   );
+
   const navigate = useNavigate();
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search/${searchValue}`);
+    setSearchValue("");
+  };
+
+  const handleSearchInput = (e) => {
+    setSearchValue(e.target.value);
+  };
 
   return (
     <div className="border border-dark header">
@@ -28,8 +40,13 @@ const Header = ({ handleToggleSidebar }) => {
         alt="logo"
         className="header__logo"
       />
-      <form>
-        <input type="text" placeholder="Search" />
+      <form onSubmit={handleSearchSubmit}>
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchValue}
+          onChange={handleSearchInput}
+        />
         <button type="submit">
           <AiOutlineSearch size={22} />
         </button>
